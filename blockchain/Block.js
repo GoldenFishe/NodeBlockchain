@@ -16,14 +16,20 @@ class Block {
         const lastHash = lastBlock.hash;
         let timestamp = Date.now();
         let nonce = 0;
-        let hash = Block.hash(timestamp, lastHash, data, nonce, config.DIFFICULTY);
-        while (hash.substring(0, config.DIFFICULTY) !== '0'.repeat(config.DIFFICULTY)) {
+        let {difficulty} = lastBlock;
+        let hash = Block.hash(timestamp, lastHash, data, nonce, difficulty);
+        while (hash.substring(0, difficulty) !== '0'.repeat(difficulty)) {
             timestamp = Date.now();
-            hash = Block.hash(timestamp, lastHash, data, nonce, config.DIFFICULTY);
-            console.log(hash);
+            difficulty = Block.adjustDifficulty(lastBlock, timestamp);
+            hash = Block.hash(timestamp, lastHash, data, nonce, difficulty);
             nonce++;
         }
-        return new this(timestamp, lastHash, hash, data, nonce);
+        return new this(timestamp, lastHash, hash, data, nonce, difficulty);
+    }
+
+    static adjustDifficulty(lastBlock, currentTime) {
+        let {difficulty} = lastBlock;
+        return lastBlock.timestamp + config.MINE_RATE > currentTime ? difficulty + 1 : difficulty - 1;
     }
 
     static hash(timestamp, lastHash, data, nonce, difficulty) {
