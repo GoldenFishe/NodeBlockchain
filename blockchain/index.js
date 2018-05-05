@@ -1,5 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
+
 const BlockChain = require('./Blockchain');
 const P2pServer = require('./p2p-server');
 const Wallet = require('../wallet/Wallet');
@@ -11,9 +13,10 @@ const p2pServer = new P2pServer(blockchain);
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.use(express.static('public'));
 
 app.get('/blocks', (req, res) => {
-    res.json(blockchain.chain);
+    res.send(blockchain.chain);
 });
 
 app.post('/mine', (req, res) => {
@@ -22,6 +25,10 @@ app.post('/mine', (req, res) => {
     p2pServer.syncChains();
     console.log('New block added.');
     res.redirect('/blocks');
+});
+
+app.get('*', function (req, res) {
+    res.sendFile(path.resolve(__dirname, '../public/index.html'));
 });
 
 app.listen(config.HTTP_PORT, () => {

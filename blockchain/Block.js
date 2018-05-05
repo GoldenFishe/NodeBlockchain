@@ -42,7 +42,7 @@ class Block {
     }
 
     static calculateHash(timestamp, lastHash, data, nonce, difficulty) {
-        Utils.hash(`${timestamp}${lastHash}${JSON.stringify(data)}${nonce}${difficulty}`)
+        return Utils.hash(`${timestamp}${lastHash}${JSON.stringify(data)}${nonce}${difficulty}`)
     }
 
     static checkHash(block) {
