@@ -1,0 +1,21 @@
+{
+  "name": "blockchain",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node blockchain/index.js",
+    "dev": "nodemon blockchain/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "ws": "^5.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.3"
+  }
+}
