@@ -27,7 +27,7 @@ app.post('/mine', (req, res) => {
     res.redirect('/blocks');
 });
 
-app.get('*', function (req, res) {
+app.get('/', function (req, res) {
     res.sendFile(path.resolve(__dirname, '../public/index.html'));
 });
 
