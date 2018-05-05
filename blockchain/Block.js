@@ -1,5 +1,5 @@
-const crypto = require('crypto'); // lib for create hashes
-const config = require('./config'); // config file
+const Utils = require('../Utils');
+const config = require('../config'); // config file
 
 /*
     timestamp:string - time when created block (1525528586561)
@@ -42,9 +42,7 @@ class Block {
     }
 
     static calculateHash(timestamp, lastHash, data, nonce, difficulty) {
-        const hash = crypto.createHash('sha256');
-        hash.update(`${timestamp}${lastHash}${JSON.stringify(data)}${nonce}${difficulty}`);
-        return hash.digest('hex');
+        Utils.hash(`${timestamp}${lastHash}${JSON.stringify(data)}${nonce}${difficulty}`)
     }
 
     static checkHash(block) {

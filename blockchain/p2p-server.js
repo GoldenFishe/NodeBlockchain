@@ -1,5 +1,5 @@
 const Websocket = require('ws');
-const config = require('./config');
+const config = require('../config');
 
 const peers = process.env.PEERS ? process.env.PEERS.split(',') : [];
 

@@ -2,8 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const BlockChain = require('./Blockchain');
 const P2pServer = require('./p2p-server');
-
-const config = require('./config');
+const Wallet = require('../wallet/Wallet');
+console.log(new Wallet());
+const config = require('../config');
 
 const app = express();
 const blockchain = new BlockChain();
