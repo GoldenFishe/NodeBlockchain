@@ -11,13 +11,11 @@ Blockchain base on Node js.
     $ npm run start // start local server
 ```
 ## API
-### Get all blocks
-Get all blocks in blockchain.
+### Get all blocks in the blockchain
 ```
     GET '/blocks
 ```
 ### Mine new block
-Mine new block.
 ```
     POST '/mine', {data: 'your data'}
 ```
