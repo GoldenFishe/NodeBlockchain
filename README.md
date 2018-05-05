@@ -1,5 +1,7 @@
 # NodeBlockchain
-Blockchain base on Node js
+Blockchain base on Node js.
+### Version
+    Current version: 'Development'
 ## INSTALLITION
 ```bash
     git clone https://github.com/GoldenFishe/NodeBlockchain
