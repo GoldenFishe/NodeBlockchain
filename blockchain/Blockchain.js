@@ -2,7 +2,7 @@ const Block = require('./Block');
 
 class Blockchain {
     constructor() {
-        this._chain = [Block.genesisBlock()];
+        this.chain = [Block.genesisBlock()];
     }
 
     addBlock(data) {
@@ -36,14 +36,6 @@ class Blockchain {
         }
         console.log('Replacing chain with the new chain.');
         this.chain = chain;
-    }
-
-    get chain() {
-        return this._chain;
-    }
-
-    set chain(chain) {
-        this._chain = chain;
     }
 }
 
